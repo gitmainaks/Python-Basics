@@ -101,5 +101,52 @@ print(8 < 5 < 6) # False
 age = 20
 print(18 <= age <= 30) # True
 
-# Logical Operators
+# Logical Operators(and|or): Used to combine multiple boolean expressions
+print((5 > 3) and (10 > 7))  # True
+print((5 > 3) and (10 < 7))  # False
+
+print((5 > 3) or (10 > 7))   # True
+print((5 > 3) or (10 < 7))   # True
+print((5 < 3) or (10 < 7))   # False
+
+# Checks if the system is under pressure
+cpu_usage = 70
+memory_usage = 95
+print(cpu_usage > 90 or memory_usage > 90) # True
+
+# Checking user credentials before login
+email = True
+password = False
+print(email and password) # False
+
+print(not 3 > 2) # False
+print(not True)  # False
+print(not False) # True
+print(not not False) # False
+
+name = ""
+print(not name) # True
+print(not 0)   # True
+
+# Execution Order [Parentheses () First, Control Mixed Conditions]
+# AND has higher precedence than OR
+
+# Allow access only if the user is logged in
+# or they are a guest
+# but they must not be banned
+is_logged_in = True
+is_guest = False
+is_banned = False
+print(is_logged_in or is_guest and not is_banned)  # True
+
+is_logged_in = True
+is_guest = False
+is_banned = True
+print(is_logged_in or is_guest and not is_banned) # True
+
+is_logged_in = True
+is_guest = False
+is_banned = True
+print((is_logged_in or is_guest) and not is_banned) # False
+
 
