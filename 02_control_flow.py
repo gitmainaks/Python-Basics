@@ -12,6 +12,7 @@
 # IF
 # ELSE
 # ELIF
+
 ## Loops
 # Types
 # FOR
@@ -149,4 +150,76 @@ is_guest = False
 is_banned = True
 print((is_logged_in or is_guest) and not is_banned) # False
 
+# Python Challenges
+# 1. Check if a user's name is not empty and the age is greater than or equal to 18.
+username = ""
+age = 20
+print(username != "" and age >= 18) # False
+
+# 2. Check if the password is at least 8 characters long and does not contain spaces.
+password = "my password"
+print(len(password) >= 8 and " " not in password) # False
+
+# 3. Check if a user's email is not empty, contains '@', and ends with '.com'.
+email = "user@example.com"
+print(email != "" and "@" in email and email.endswith(".com")) # True
+
+# 4. Check if a username is a string, is not None, and is longer than 5 characters.
+username = "user123"
+print(isinstance(username, str) and username is not None and len(username) > 5) # True
+
+# 5. Check if the user is either an admin or a moderator, and either they're not banned or they've verified their email.
+is_admin = False
+is_moderator = True
+is_banned = False
+is_email_verified = True
+print((is_admin or is_moderator) and (not is_banned or is_email_verified)) # True
+
+# Membership Operators (IN/NOT IN): Checks if a value inside another value, like a string, list, tuple, or dictionary or other sequence)
+print("o" in "Python")  # True
+print("f" not in "Python")  # True
+
+print(3 in [1, 2, 3, 4, 5])  # True
+print(3 not in [1, 2, 3, 4, 5])  # False
+
+# Security check: ensure the domain is not blacklisted
+domain = "gmail.com"
+banned_domains = ["spam.com", "fake.org", "bot.net"]
+print (domain not in banned_domains)  # True
+
+# Identity Operators (IS/IS NOT): Checks if two variables refer to the same object in memory
+# Variables >>>Pointers>>> ID > Values
+# a == b (comparing the values of the two variables)
+# a is b (comparing the Ids of the objects, whether the two variables are pointing to the same object in the memory)
+x = ['a', 'b', 'c']
+y = ['a', 'b', 'c']
+
+print(x == y)   #True
+print(x is y)   #False
+
+x = 10
+y = 10
+
+print(x == y)   #True
+print(x is y)   #True
+
+x = ['a', 'b', 'c']
+y = x
+
+print(x == y)   #True
+print(x is y)   #True
+
+# Make sure the email exists, and it's not empty
+email1 = ""
+email2 = "b@gmail.com"
+email3 = None
+
+print(email1 != "")   #False
+print(email2 != "")   #True
+print(email3 != "")   #True
+print(email3 != None and email3 != "")   #False
+print(email3 is not None and email3 != "") # Use IS instead of == when checking for None   #False
+
+
+## 2. Conditional Statements
 
