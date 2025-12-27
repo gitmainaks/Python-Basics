@@ -223,3 +223,310 @@ print(email3 is not None and email3 != "") # Use IS instead of == when checking 
 
 ## 2. Conditional Statements
 
+# Standalone
+# IF Statement
+# Defines the first condition (If this is true, do this, otherwise, do nothing)
+# IF Condition1: do A
+# IF Rules
+# 1) Only one If
+# 2) Starts with If
+# 3) Required
+# 4) Can standalone
+## Itendation is part of the syntax in Python
+score1 = 100
+if score1 >= 90:
+    print("A")
+score2 = 50
+if score2 >= 90:
+    print("A")
+
+# Two-Way Decision (Only one path runs!)
+# IF ELSE
+# ELSE Statement
+# Runs only if all previous conditions are false (If nothing was true, do this instead)
+# IF Condition1:
+#    do A
+# ELSE:
+#    do B
+# ELSE Rules
+# 1) Comes at the end
+# 2) No conditions
+# 3) Optional
+# 4) Cannot standalone
+# 5) Only one else
+score2 = 50
+if score2 >= 90:
+    print("A")
+else:
+    print("F")
+
+# Multiple Conditions
+# IF-ELIF-ELSE
+# ELIF Statement
+# Asks a follow-up question, only runs if previous conditions were false (If the first wasn't true, try this one)
+# IF Condition1:
+#    do A
+# ELIF Condition2:
+#    do C
+# ELSE:
+#    do B
+# ELIF Rules
+# 1) Comes after IF
+# 2) Multiple ELIF
+# 3) Needs condition
+# 4) Optional
+# 5) Cannot standalone
+score = 85
+if score >= 90:
+    print("A")
+elif score >= 80:
+    print("B")
+else:
+    print("F")
+
+# Branching
+# IF-ELIF-ELIF-ELSE
+score = 76
+if score >= 90:
+    print("A")
+elif score >= 80:
+    print("B")
+elif score >= 70:
+    print("C")
+else:
+    print("F")
+# Ans: C
+
+# Nesting (Nested Ifs)
+# IF-ELSE
+score = 95
+submitted_project = True
+if score >= 90:
+    if submitted_project:
+        print("A+")
+    else:
+        print("A")
+elif score >= 80:
+    print("B")
+elif score >= 70:
+    print("C")
+elif score >= 60:
+    print("D")
+else:
+    print("F")
+# Ans: A+
+
+# Connecting Conditions (Logical Operators)
+score = 95
+submitted_project = False
+if score >= 90 and submitted_project:
+    print("A+")
+elif score >= 90:
+    print("A")
+elif score >= 80:
+    print("B")
+elif score >= 70:
+    print("C")
+elif score >= 60:
+    print("D")
+else:
+    print("F")
+# Ans: A
+
+score = 50
+submitted_project = True
+if score >= 90 and submitted_project:
+    print("A+")
+elif score >= 90:
+    print("A")
+elif score >= 80:
+    print("B")
+elif score >= 70:
+    print("C")
+elif score >= 60 or submitted_project:
+    print("D")
+else:
+    print("F")
+# Ans: D
+
+# Independent (Independent Ifs)
+# IF-ELSE
+# Each IF is checked separately (All conditions are tested, even if one is already true)
+score = 50
+submitted_project = False
+
+if score >= 90:
+    print("High Score")
+else:
+    print("Low Score")
+
+if submitted_project:
+    print("Project is submitted")
+else:
+    print("Project is not submitted")
+# Ans: Low Score, Project is not submitted
+
+# Python Challenge
+# 1. Validate the Quality and Correctness of Email Values
+# - Must not be empty
+# - Must contain '.' and '@'
+# - Must contain exactly one '@' symbol
+# - Must end with '.com', '.org', or '.net'
+# - Must not be longer than 254 characters
+# - Must start and end with a letter or digit
+email = "  "
+email = email.strip()   # Clean the String
+# Email must not be empty
+if email == "":
+    print("Email connot be empty.")
+else:
+    print("Email is valid.")
+# Ans: Email cannot be empty
+
+email = "xyz@promailcom"
+email = email.strip()   # Clean the String
+# Email must not be empty
+if email == "":
+    print("Email connot be empty.")
+# Email must contain a '.' and '@'
+elif not('.' in email and '@' in email):
+    print("Email must contain . and @.")
+else:
+    print("Email is valid.")
+# Ans: Email must contain . and @.
+
+email = "xyz@pro@mail.com"
+email = email.strip()   # Clean the String
+# Email must not be empty
+if email == "":
+    print("Email connot be empty.")
+# Email must contain a '.' and '@'
+elif not('.' in email and '@' in email):
+    print("Email must contain . and @.")
+# Email must contain exactly one '@' symbol
+elif email.count('@') != 1:
+    print("Email must contain exactly one '@'.")
+else:
+    print("Email is valid.")
+# Ans: Email must contain exactly one '@'.
+
+email = "xyz@promail.io"
+email = email.strip()   # Clean the String
+# Email must not be empty
+if email == "":
+    print("Email connot be empty.")
+# Email must contain a '.' and '@'
+elif not('.' in email and '@' in email):
+    print("Email must contain . and @.")
+# Email must contain exactly one '@' symbol
+elif email.count('@') != 1:
+    print("Email must contain exactly one '@'.")
+# Email must end with '.com', '.org', or '.net'
+elif not email.endswith(('.com', '.org', '.net')):   # Use of SET
+    print("Email must end with '.com', '.org', or '.net'.")
+else:
+    print("Email is valid.")
+# Ans: Email must end with '.com', '.org', or '.net'.
+
+email = "xyz@promail.net"
+email = email.strip()   # Clean the String
+# Email must not be empty
+if email == "":
+    print("Email connot be empty.")
+# Email must contain a '.' and '@'
+elif not('.' in email and '@' in email):
+    print("Email must contain . and @.")
+# Email must contain exactly one '@' symbol
+elif email.count('@') != 1:
+    print("Email must contain exactly one '@'.")
+# Email must end with '.com', '.org', or '.net'
+elif not email.endswith(('.com', '.org', '.net')):   # Use of SET
+    print("Email must end with '.com', '.org', or '.net'.")
+# Email must not be longer than 254 characters
+elif len(email) > 254:
+    print("Email must not be longer than 254 characters.")
+else:
+    print("Email is valid.")
+# Ans: Email is valid.
+
+# Case 1: Only one IF and ELIFs
+email = "+xyz@promail.net"
+email = email.strip()   # Clean the String
+# Email must not be empty
+if email == "":
+    print("Email connot be empty.")
+# Email must contain a '.' and '@'
+elif not('.' in email and '@' in email):
+    print("Email must contain . and @.")
+# Email must contain exactly one '@' symbol
+elif email.count('@') != 1:
+    print("Email must contain exactly one '@'.")
+# Email must end with '.com', '.org', or '.net'
+elif not email.endswith(('.com', '.org', '.net')):   # Use of SET
+    print("Email must end with '.com', '.org', or '.net'.")
+# Email must not be longer than 254 characters
+elif len(email) > 254:
+    print("Email must not be longer than 254 characters.")
+# Email must start and end with a letter or digit
+elif not(email[0].isalnum() and email[-1].isalnum()):   # Use of Index[], ISALNUM() - Checks if the string contains only letters and digits(a function)
+    print("Email must start and end with a letter or digit.")
+else:
+    print("Email is valid.")
+# Ans: Email must start and end with a letter or digit.
+
+# Case 2: Independent IFs
+email = "+xyz@promail.net#"
+email = email.strip()   # Clean the String
+# Email must not be empty
+if email == "":
+    print("Email connot be empty.")
+# Email must contain a '.' and '@'
+if not('.' in email and '@' in email):
+    print("Email must contain . and @.")
+# Email must contain exactly one '@' symbol
+if email.count('@') != 1:
+    print("Email must contain exactly one '@'.")
+# Email must end with '.com', '.org', or '.net'
+if not email.endswith(('.com', '.org', '.net')):   # Use of SET
+    print("Email must end with '.com', '.org', or '.net'.")
+# Email must not be longer than 254 characters
+if len(email) > 254:
+    print("Email must not be longer than 254 characters.")
+# Email must start and end with a letter or digit
+if not(email[0].isalnum() and email[-1].isalnum()):   # Use of Index[], ISALNUM() - Checks if the string contains only letters and digits(a function)
+    print("Email must start and end with a letter or digit.")
+else:
+    print("Email is valid.")
+# Ans: Email must end with '.com', '.org', or '.net'. and Email must start and end with a letter or digit.
+
+# Case 3:
+email = "xyz@promail.net"
+valid = True
+email = email.strip()   # Clean the String
+# Email must not be empty
+if email == "":
+    print("Email connot be empty.")
+    valid = False
+# Email must contain a '.' and '@'
+if not('.' in email and '@' in email):
+    print("Email must contain . and @.")
+    valid = False
+# Email must contain exactly one '@' symbol
+if email.count('@') != 1:
+    print("Email must contain exactly one '@'.")
+    valid = False
+# Email must end with '.com', '.org', or '.net'
+if not email.endswith(('.com', '.org', '.net')):   # Use of SET
+    print("Email must end with '.com', '.org', or '.net'.")
+    valid = False
+# Email must not be longer than 254 characters
+if len(email) > 254:
+    print("Email must not be longer than 254 characters.")
+    valid = False
+# Email must start and end with a letter or digit
+if not(email[0].isalnum() and email[-1].isalnum()):   # Use of Index[], ISALNUM() - Checks if the string contains only letters and digits(a function)
+    print("Email must start and end with a letter or digit.")
+    valid = False
+if valid:
+    print("Email is valid.")
+# Ans: Email is valid.
