@@ -530,3 +530,118 @@ if not(email[0].isalnum() and email[-1].isalnum()):   # Use of Index[], ISALNUM(
 if valid:
     print("Email is valid.")
 # Ans: Email is valid.
+
+# Inline IF Statement (Ternary)
+# (do A IF condition1 else do B) Quick & Short
+# Rules
+# 1) Must have ELSE
+# 2) No ELIF
+# 3) Can be stored in a variable
+# 4) If the logic is very simple!
+# Classical IF-ELSE
+score = 100
+if score >= 90:
+    print("A")
+else:
+    print("F")
+# Inline IFs
+print("A" if score >= 90 else "F")
+
+grade = "A" if score >= 90 else "F"
+print(grade)
+
+# Classical IF-ELSE (For complex logic)
+score = 85
+if score >= 90:
+    print("A")
+elif score >= 80:
+    print("B")
+else:
+    print("F")
+# Inline IFs (For simple logic)
+grade = "A" if score >= 90 else "B" if score >= 80 else "F"
+print(grade)
+
+# Special Statements:
+# MATCH CASE
+# Evaluate a value against multiple values, runs the code of the first match.
+# Task
+# IF-ELIF-ELSE (For flexible logic and multiple conditions)
+country = "USA"
+if country == "United States":
+    print("US")
+elif country == "India":
+    print("IN")
+elif country == "Egypt":
+    print("EG")
+elif country == "Germany":
+    print("DE")
+else:
+    print("Unknown Country")
+# Ans: Unknown Country
+
+# MATCH CASE (Easy to Read & Write)
+match country:
+    case "United States" | "USA":   # Matching multiple values in a single case
+        print("US")
+    case "India":
+        print("IN")
+    case "Egypt":
+        print("EG")
+    case "Germany":
+        print("DE")
+    case _:
+        print("Unkown Country")
+# Ans: US
+# Can be used only for matching values
+
+
+## 3. Loops
+
+# Controling the flow of code
+# Repeat a block of code over and over until a condition is met
+
+# (1) For Loops
+# Basics: Go through a group of items one by one to do something for each item.
+# Python Iterator: an object that go through items one by one in a sequence (Remembers what's done. Knows what's next).
+# Sequences (Tuple, List, String, Range, Dictionary, File)
+print("Round: 1")
+print("Round: 2")
+print("Round: 3")
+print("Round: 4")
+print("Round: 5")
+
+for i in (1,2,3,4,5):
+    print(f"Round: {i}")   # String function 'f' and Loop variable {i}
+
+# Use the same word: Variable > singular, Sequence > plural
+items = (1,2,3,4,5)   # Tuple ()
+for item in items:
+    print(f"Round: {item}")
+
+items = [1,2,3,4,"Py"]   # List []
+for item in items:
+    print(f"Round: {item}")
+
+items = " Python"   # String " "
+for item in items:
+    print(f"Round: {item}")
+# Ans: Rounds &   P y t h o n
+
+# Range Function: to generate a sequence of numbers
+# RANGE(Start[optional,default=0,in], Stop[out], Step[optional,default=1]) 
+for item in range(1, 10, 2):
+    print(f"Round: {item}")
+# Ans: 1 3 5 7 9 (Only odd numbers, from 1 to 10 with 2 steps)
+# Any object in Python that is iteratable, could be use in For Loop.
+
+# For Loops Applications-
+# Loading Data/Tables(csv files) from Source to Target
+#for filename in [file]:
+#    df = pd.read_csv(src)
+#    df.to_csv(tgt, index=False)
+# Data Preparation
+# Data Cleaning (Iteration through columns)
+#for col in df.columns:
+#    df[col] = df[col].str.strip()
+# We use For Loops to go through values and aggregate data like summing, counting or averaging.
