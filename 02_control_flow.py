@@ -644,4 +644,80 @@ for item in range(1, 10, 2):
 # Data Cleaning (Iteration through columns)
 #for col in df.columns:
 #    df[col] = df[col].str.strip()
+
 # We use For Loops to go through values and aggregate data like summing, counting or averaging.
+scores = [80, 50, 60, 75]
+total = 0
+for score in scores:
+    total = total + score
+    print("Current Total:", total)
+print("Final Total:", total)
+
+scores = [80, 50, 60, 75]   # Sequence (scores), only for iteration
+total = 0
+for score in scores:   # Loop Variable (score)
+    total += score   # Use the Loop Variable, not the Sequence
+    print("Current Total:", total)
+print("Final Total:", total)
+# Ans: Final Total: 265
+
+# We use For Loops to transform data like cleaning data before processing.
+# Inconsistent casing & unnecessary spaces
+files = [' Report.csv ', 'DATA.csv ', ' final.TXT']
+for file in files:
+    file = file.strip().lower().replace('.txt', '.csv')   # Clean first, Transform second
+    print(f"Processing {file}")
+
+# Python challenges
+# 1) Print the 7-times table from 1 to 10 using a for loop.
+for i in range(1, 11):
+    print(f"7 x {i} = {7 * i}")
+
+# 2) Print a left-aligned pyramid of stars with 6 rows using a for loop.
+for i in range(1, 7):
+    print('*' * i)
+# Right-aligned pyramid
+for i in range(1, 7):
+    spaces = ' ' * (6-i)
+    stars = '*' * i
+    print(f"{spaces}{stars}")
+
+# Advanced For Loops
+# Loop Control
+# BREAK, CONTINUE, PASS
+
+# BREAK Statement (When to stop?)
+# It stops the loop immediately (jumps out and ends the loop right away)
+names = ['john', 'maria', '', 'max']
+for name in names:   # first condition (FOR)
+    if name == '':   # second condition (IF under FOR)
+        print('Empty value detected!')
+        break
+    print(f'Name = {name}')
+
+# CONTINUE Statement (When to skip?)
+# It skips one loop cycle without stopping the loop (skip this one and go next)
+names = ['john', 'maria', '', 'max']
+for name in names:   # first condition (FOR)
+    if name == '':   # second condition (IF under FOR)
+        print('Empty value detected!')
+        continue
+    print(f'Name = {name}')
+# Use CONTINUE to skip bad or empty data without stopping the whole loop.
+
+# PASS Statement (When to pass?)
+# It is a placeholder where nothing happens (for now.. just keep going.. do nothing...)
+# Iteration without having a condition (just a placeholder to be changed later)
+names = ['john', 'maria', '', 'max']
+for name in names:
+    if name == '':
+        pass # todo: Handle Empty Value
+    print(f'Name = {name}')
+
+names = ['john', 'maria', '', 'max']
+for name in names:
+    if name == '':
+        name = name.replace('', 'unknown') # Handling Empty Value
+    print(f'Name = {name}')
+
+
