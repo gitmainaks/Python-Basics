@@ -635,7 +635,7 @@ for item in range(1, 10, 2):
 # Ans: 1 3 5 7 9 (Only odd numbers, from 1 to 10 with 2 steps)
 # Any object in Python that is iteratable, could be use in For Loop.
 
-# For Loops Applications-
+# For Loops Applications -
 # Loading Data/Tables(csv files) from Source to Target
 #for filename in [file]:
 #    df = pd.read_csv(src)
@@ -719,5 +719,33 @@ for name in names:
     if name == '':
         name = name.replace('', 'unknown') # Handling Empty Value
     print(f'Name = {name}')
+
+# Break vs Continue, Applications - 
+# Loop through a list of days and print only the working days, skipping the weekends.
+days = ['Mon', 'Sun', 'Wed', 'Tue']
+for day in days:
+    if day in ['Sat', 'Sun']:   # Avoid hardcoding values inside FOR or IF. Instead, define them as variables.
+        continue
+    print(f'Workday: {day}')
+
+days = ['Mon', 'Sun', 'Wed', 'Tue']
+weekends = ['Sat', 'Sun']   # Correct approach
+for day in days:
+    if day in weekends:
+        continue
+    print(f'Workday: {day}')
+
+# Scan emails to block unsafe data from entering the system.
+emails = [
+    'data@gmail.com',
+    'max@outlook.in',
+    'DROP TABLE USERS;',   # SQL Injection Threat
+    'maria@gmail.com'
+]
+for email in emails:
+    if ';' in email:
+        print('SQL Injection: Hacker Attack')
+        break
+    print(f'Processing Email: {email}')
 
 
