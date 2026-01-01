@@ -602,6 +602,7 @@ match country:
 # Repeat a block of code over and over until a condition is met
 
 # (1) For Loops
+
 # Basics: Go through a group of items one by one to do something for each item.
 # Python Iterator: an object that go through items one by one in a sequence (Remembers what's done. Knows what's next).
 # Sequences (Tuple, List, String, Range, Dictionary, File)
@@ -849,7 +850,84 @@ for t in tables:
     for c in columns:
         print(f'SELECT count(*) FROM {t} WHERE {c} IS NULL;')
 
+
 # (2) While Loops
 
+# Repeats a block of code - over and over as long as condition is True.
+# FOR vs WHILE
+# for i in [sequence]:
+#    print(i)
+# while condition:
+#    do something
+# Two Categories-
+# (i) Condition (loop keep going until the condition becomes false, Classical Type)
+# WHILE Condition
+# Initialization >> Condition >> Update (avoid Infinite loop!)
+# Task: Build a counter from 1 to 5.
+count = 1   # Initialization
+while count <= 5:   # Condition
+    print(count)
+    count += 2   # Update
+# Counter based loop
+
+# Task: Write a program that keeps asking "Do you agree?" until the user types "yes".
+answer = ""
+while answer != "yes":
+    answer = input("Do you agree?(yes/no): ")
+print("Thank You")
+# Make sure inside each iteration there is possibility to change the value, to avoid infinite loop.
+
+# (ii) True (loop run forever, it is infinite, Use with a BREAK statement)
+# WHILE True
+# While True
+#    do somthing
+# It will be always true
+
+# Disclaimer: Only run the following statement if the PC is powerful and the work is already saved!!!
+while True:
+    answer = input("Do you agree?(yes/no): ")
+    if answer == "yes":
+        break
+print("Thank You")
+
+# Python challenge
+# Allow up to 3 attempts
+# If the user types "yes" within 3 attempts, print "Glad we are on the same page"
+# Otherwise, print "3 Strikes. You are Out!"
+attempts = 0   # Initialization
+while attempts < 3:
+    answer = input("Do you agree?(yes/no): ")
+    if answer == "yes":
+        print("Glad we're on the same page")
+        break
+    attempts += 1   # Update
+else:
+    print("3 strikes. You're Out!")
+# How can a loop do one thing when it finds something, and another when it doesn't?
+# Note: Use ELSE + BREAK for either-or logic in loops.
+# Note: If it is known, how many times to loop, use While Condition -- not While True.
+
+# WHILE - Condition vs True
+# Condition:
+# - Exists Normally -- Condition = False
+# - Safer and More Readable
+# - Counter, Limited Retries
+# True:
+# - Must have extra IF + BREAK
+# - Risk of Infinite loop but More Flexible
+# - Open-ended scenario, when trying to get a trigger from something External (waiting) - Database, Stream, API
 
 
+# Loops - FOR vs WHILE
+# FOR:
+# - Loop over a Fixed Sequence
+# - Predefined Condition
+# - Nr. of iteration is Known
+# - "Processing Data"
+# - Simple, Clear & Safe but Limited
+# WHILE:
+# - Loop while a condition is True
+# - Customizable Condition
+# - Nr. of iteration is Unknown
+# - "Waiting for external Event"
+# - Advanced & Flexible but Complex & Risky
