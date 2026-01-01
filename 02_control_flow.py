@@ -748,4 +748,108 @@ for email in emails:
         break
     print(f'Processing Email: {email}')
 
+# ELSE in Loop
+# ELSE statement inside a FOR loop
+# Runs a block of code only if the loop finishes naturally (Loop completed without breaks)
+items = [1, 3, 5, 7, 9]
+for item in items:
+    print(item)
+else:
+    print("Loop is completed")
+# Note: This ELSE runs no matter what, so why not just write it after the loop?
+# Use ELSE with loops only when there's a BREAK.
+# ELSE + BREAK
+# Check for even number
+items = [1, 3, 5, 7, 9]
+for item in items:
+    if item % 2 == 0:
+        print("Even Nr. Found", item)
+        break
+else:
+    print("All numbers are odd")
+# ELSE will run only if the loop is not interrupted.
+
+# Applications - 
+# Search & Validate
+names = ['Kanada', 'Tuba', 'Maria', 'Max']
+for name in names:
+    if name is None:
+        print("Found a missing name")
+        break
+else:
+    print("All names are available")
+# Check if all files are CSV files
+files = ['data1.csv',
+         'report.pdf',
+         'report2.csv']
+for file in files:
+    if not file.endswith('.csv'):
+        print(f'{file} is not a CSV')
+        break
+else:
+    print('All files are CSV')
+
+files = ['data1.csv',
+         'report.pdf',
+         'data2.txt',
+         'report2.csv']
+for file in files:
+    if not file.endswith('.csv'):
+        print(f'Not all files are CSV')
+        break
+else:
+    print('All files are CSV')
+# Note: It makes no sense to use ELSE + CONTINUE
+
+# Python challenge
+# Check whether any filename appears more than once
+file_list = [
+    'report.csv',
+    'data.xlsx',
+    'summary.docx',
+    'report.csv',
+    'data.csv'
+]
+for file in file_list:
+    if file == file:
+        print(f"Duplicate Found {file}")
+        break
+else:
+    print("All files are unique")
+
+# Nested FOR LOOP
+# Loop inside another loop.
+for x in range(3):   # Outer loop
+    for y in range(2):   # Inner loop
+        for z in range(2):
+            print(f"{x}, {y}, {z}")
+
+# Applications - 
+# Crossing & Combining of Data (Cartesian)
+colors = ['red', 'blue', 'green']
+sizes = ['L', 'M', 'S']
+for color in colors:
+    for size in sizes:
+        print(f'{color} - Size {size}')
+
+# Navigate Hierarchy
+years = [2026, 2027]
+months = ['Jan', 'Feb']
+days = range(1, 29)
+for y in years:
+    for m in months:
+        for d in days:
+            print(f'report_{y}_{m}_{d}.csv')
+
+# Navigate through Tables & Columns (Tables > Columns > Rows)
+# SELECT count(*) FROM customers where id IS NULL;
+tables = ['customers', 'orders', 'products', 'prices']
+columns = ['id', 'create_date']
+for t in tables:
+    for c in columns:
+        print(f'SELECT count(*) FROM {t} WHERE {c} IS NULL;')
+
+# (2) While Loops
+
+
 
