@@ -92,4 +92,80 @@ print(mixed_matrix)
 print(type(mixed_matrix))
 # Ans: [['a', 'b'], [1, 2, 3], [True]], <class 'list'>
 
+# Access Lists:
+
+# Indexing & Slicing
+# Access & Read
+
+# Indexing
+# Task: Get the first item from the list
+lst = ['a', 'b', 'c', 'd']
+print(lst)
+print(lst[0])
+# Ans: a
+# Task: Get the last item from the list
+lst = ['a', 'b', 'c', 'd']
+print(lst[3])
+print(lst[-1])
+# Ans: d, d
+# Task: Get the 'c' from the list
+print(lst[-2])
+# Ans: c
+# Nested List (Matrix)
+## matrix >> Whole List, matrix[1] >> Complete Row, matrix[1][1] >> One Single Value
+matrix = [
+    ['a', 'b', 'c'],   # Row 0
+    ['d', 'e', 'f'],   # Row 1
+    ['g', 'h', 'i']    # Row 2
+]
+# Task: Get the whole Matrix
+print(matrix)
+# Ans: [['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i']]
+# Task: Get the last row of the matrix
+print(matrix[2])
+print(matrix[-1])
+# Ans: ['g', 'h', 'i']
+# Task: Get the last item of the last row
+print(matrix[-1][-1])
+# Ans: i
+# Task: Get the first item of the first row
+print(matrix[0][0])
+# Ans: a
+# Task: Get the second item of the second row of the matrix
+print(matrix[1][1])
+# Ans: e (Answer can vary depending on the structure of the matrix)
+
+# Slicing
+# Task: Get the first two items from the list
+lst = ['a', 'b', 'c', 'd']
+print(lst)
+print(lst[0:2])
+print(lst[:2])
+# Ans: ['a', 'b']
+# Task: Get the last three items from the list
+print(lst[1:4])
+print(lst[1:])
+# Ans: ['b', 'c', 'd']
+# Task: Get the whole list
+print(lst[:])
+# Ans: ['a', 'b', 'c', 'd']
+# Nested List (Matrix)
+## matrix >> Whole List, matrix[1:3] >> Complete Rows, matrix[2][:-1] >> Certain part of a Specific Row
+matrix = [
+    ['a', 'b', 'c'],   # Row 0
+    ['d', 'e', 'f'],   # Row 1
+    ['g', 'h', 'i']    # Row 2
+]
+# Task: Get the first two rows (lists) from a list
+print(matrix[0:2])
+print(matrix[:2])
+# Ans: [['a', 'b', 'c'], ['d', 'e', 'f']]
+# Task: Get the last two rows (lists) from a list
+print(matrix[1:3])
+print(matrix[1:])
+# Ans: [['d', 'e', 'f'], ['g', 'h', 'i']]
+# Task: Slicing inside one specific row
+print(matrix[2][:2])
+# Ans: ['g', 'h']
+
 
