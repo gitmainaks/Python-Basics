@@ -3,8 +3,8 @@
 
 ## 1. List
 ## 2. Tuple
-## 3. Dictionary
-## 4. Set
+## 3. Set
+## 4. Dictionary
 ## 5. Array
 
 ### Data Structure, is a way of organizing and storing data so it can be used efficiently.
@@ -411,4 +411,55 @@ print(matrix)   # Ans: [['-', 'b', 'c'], ['d', '-', 'f'], ['g', 'h', 'i']]
 # Task: Update the last item of the last row
 matrix[-1][-1] = '-'
 print(matrix)   # Ans: [['-', 'b', 'c'], ['d', '-', 'f'], ['g', 'h', '-']]
+
+# Order Lists:
+
+# .sort() - Method
+# Task: Sort the list in ascending order
+letters = ['c', 'a', 'b']
+letters.sort()   # default Ascending order
+letters.sort(reverse = True)   # Descnding order
+print(letters)   # Ans: ['c', 'b', 'a']
+# Sorting
+matrix = [
+    ['d', 'e', 'f'],   # Row 0
+    ['g', 'h', 'i'],   # Row 1
+    ['a', 'b', 'c']    # Row 2
+]
+matrix.sort()
+print(matrix)   # Ans: [['a', 'b', 'c'], ['d', 'e', 'f'], ['g', 'h', 'i']]
+# Note: For multiple lists, Python sorts by the first item of each inner list.
+matrix = [
+    ['d', 'e', 'f'],   # Row 0
+    ['a', 'z', 'i'],   # Row 1
+    ['a', 'a', 'c']    # Row 2
+]
+matrix.sort()
+print(matrix)   # Ans: [['a', 'a', 'c'], ['a', 'z', 'i'], ['d', 'e', 'f']]
+# Task: Sort the second list
+matrix = [
+    ['d', 'e', 'f'],   # Row 0
+    ['a', 'z', 'i'],   # Row 1
+    ['a', 'a', 'c']    # Row 2
+]
+matrix[1].sort()
+print(matrix)   # Ans: [['d', 'e', 'f'], ['a', 'i', 'z'], ['a', 'a', 'c']]
+# sorted() - Function
+letters = ['c', 'a', 'b']
+new_list = sorted(letters)
+print('Original List:', letters)   # original list is unchanged
+print('Sorted List:', new_list)   # Ans: Sorted List: ['a', 'b', 'c']
+new_list = sorted(letters, reverse = True)
+print('Sorted List:', new_list)
+
+# Reversing List: Flip the List around
+# .reverse() - Method
+letters = ['c', 'a', 'b']
+letters.reverse()
+print(letters)   # Ans: ['b', 'a', 'c']
+# reversed() - Function
+letters = ['c', 'a', 'b']
+new_list = list(reversed(letters))   # Note: reversed() creates an iterator object, not a list.
+print('Original List:', letters)
+print('Reversed List:', new_list)   # Ans: Reversed List: ['b', 'a', 'c']
 
