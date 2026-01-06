@@ -463,3 +463,89 @@ new_list = list(reversed(letters))   # Note: reversed() creates an iterator obje
 print('Original List:', letters)
 print('Reversed List:', new_list)   # Ans: Reversed List: ['b', 'a', 'c']
 
+# Copy Lists:
+
+# Raw Data & Modified Data (Compare)
+# Reference, Copy, Shallow Copy, Deep Copy
+# Assignment = 
+# Original
+# CopyList = Original >> Object(list)(original) >> objects(str, 'a')
+# New variable is referencing to the same list (original).
+# Task: Create a copy of the list in a new variable
+letters = ['a', 'b', 'c']
+letters_copy = letters
+letters.pop()
+letters_copy.append('z')
+print('Original:', letters)    # Original: ['a', 'b', 'z']
+print('Copy:', letters_copy)   # Copy: ['a', 'b', 'z']
+# Note: Both variables reference the same list in memory.
+
+# Shallow Copy (Method)
+# CopyList = Original.Copy() >> Object(list)(original) & Object(list)(copy) >> separete objects(str, 'a') for copy
+letters = ['a', 'b', 'c']
+letters_copy = letters.copy()
+letters.pop()
+letters_copy.append('z')
+print('Original:', letters)    # Original: ['a', 'b']
+print('Copy:', letters_copy)   # Copy: ['a', 'b', 'c', 'z']
+# Note: .copy() creates a separate list in memory
+
+# Deep Copy (Function)
+# Task: Add a new item in the 1st row of the copied list
+matrix = [
+    ['a', 'b'],   # Row 0
+    ['c', 'd'],   # Row 1
+]
+matrix_copy = matrix.copy()
+matrix.pop()
+matrix_copy[0].append('z')
+print('Original:', matrix)         # Original: [['a', 'b', 'z']]
+print('Copy:    ',  matrix_copy)   # Copy:     [['a', 'b', 'z'], ['c', 'd']]
+# Note: The .copy() method creates a SHALLOW copy
+# CopyList = Original.Copy() >> Object(list)(original) & Object(list)(copy) >> Objects(lists)(original) & Objects(lists)(copy) >> separately uasble objects(str, 'a') for copy
+#                               -------- Top Level (Independent) ---------                                                        ---------- Deeper Level (Shared) -----------
+# Standard Library > Copy Module > Functions - copy(), deepcopy()
+# import Copy
+# Original
+# CopyList = Copy.deepcopy(Original) >> Object(list)(original) & Object(list)(copy) >> Objects(lists)(original) & Objects(lists)(copy) >> Completely Independent copies from the lists - objects(str, 'a') (No pointers, no references)
+#                                       -------- Top Level (Independent) ---------                                                        ------------------------------ Deeper Level (Independent) -----------------------------------
+import copy
+matrix = [
+    ['a', 'b'],   # Row 0
+    ['c', 'd'],   # Row 1
+]
+matrix_copy = copy.deepcopy(matrix)
+#matrix_copy = copy.copy(matrix)
+matrix.pop()
+matrix_copy[0].append('z')
+print('Original:', matrix)         # Original: [['a', 'b']]
+print('Copy:    ',  matrix_copy)   # Copy: [['a', 'b', 'z'], ['c', 'd']]
+# Note: copy.deepcopy() creates a true, independent copy for all levels.
+# Note: copy.copy() creates a SHALLOW copy just like the method .copy().
+# Note: copy.copy() is more general than list.copy(), not limited to lists. (Methods like .copy() belongs to specific class, but the functions are for allpurpose)
+
+# Testing
+# IS Operator
+# Checks If Two Variables Refer to the Same Object
+original = [
+    ['a', 'b'],   # Row 0
+    ['c', 'd'],   # Row 1
+]
+# Assignment
+copy1 = original
+print("Same Object?", original is copy1, "\n")          # Ans: Same Object? True
+# Shallow Copy
+copy2 = original.copy()
+print("Same Object?", original is copy2)                # Ans: Same Object? False
+print("Shared Lists?", original[0] is copy2[0], "\n")   # Ans: Shared Lists? True
+# Deep Copy
+copy3 = copy.deepcopy(original)
+print("Same Object?", original is copy3)                # Ans: Same Object? False
+print("Shared Lists?", original[0] is copy3[0], "\n")   # Ans: Shared Lists? False
+# Tip: Use the IS operator to check if the copies are truly independent.
+# How to Copy?
+# Avoid Assignment = (Risky & Confusing)
+# Use .copy() for simple, flat lists
+# Use copy.deepcopy() for Nested lists
+# Always make extra Copy for Experiments/Tests
+
