@@ -549,3 +549,145 @@ print("Shared Lists?", original[0] is copy3[0], "\n")   # Ans: Shared Lists? Fal
 # Use copy.deepcopy() for Nested lists
 # Always make extra Copy for Experiments/Tests
 
+# Combine Lists:
+
+letters = ['a', 'b', 'c']
+numbers = [1, 2, 3]
+comb = letters + numbers
+print(comb)          # Ans: ['a', 'b', 'c', 1, 2, 3] flat list
+# Multiplier Operator, makes multiple copies of the same list.
+print(letters * 2)   # Ans: ['a', 'b', 'c', 'a', 'b', 'c']
+# New Nested List (two lists inside one big list)
+comb = [letters, numbers]
+print(comb)          # Ans: [['a', 'b', 'c'], [1, 2, 3]]
+
+# .extend() Change the list itself by adding the second list inside it
+# list1.Extend(list2) (Method), like appending list
+letters = ['a', 'b', 'c']
+numbers = [1, 2, 3]
+numbers.extend(letters)
+print(letters)   # Ans: ['a', 'b', 'c']
+print(numbers)   # Ans: [1, 2, 3, 'a', 'b', 'c']
+# Note: Extends doesn't create a new list; it expands the original one.
+
+# Zip() (Function), pairing the items from two list by positions
+# Output of the zip would be a list of Tuples (a Nested thing)
+# Python will stop at the shortest list.
+# Output of the zip function is an iterator, an object. Convert it to list by using fn list().
+letters = ['a', 'b', 'c']
+numbers = [1, 2, 3, 4]
+comb = list(zip(letters, numbers, "Hi"))
+print(comb)   # Ans: [('a', 1, 'H'), ('b', 2, 'i')]
+# Task: Pair Customers with their IDs (rebuild the relationship)
+ids = [101, 102, 103]
+names = ['Kali', 'Sara', 'Don']
+print(list(zip(ids, names)))   # Ans: [(101, 'Kali'), (102, 'Sara'), (103, 'Don')]
+
+# Advanced Techniques:
+
+# How to Iterate?
+
+# Iterator vs Iterable
+# Enumerate, Map, Filter, Reversed, Chain (Functions)
+
+# Why do we need Iterators?
+# 1) For Looping
+# 2) Save Memory (Big Data)
+# 3) Speed Flexibility (Data Pipeline, Transformation, Kafka)
+
+# Iterator - An object that helps to do the iteration, the process, the engine, the machine.
+# Iterable - An object that has a sequence of items, in order to loop over, the data structure itself. (str is iterable, but int or boolean aren't)
+
+letters = ['a', 'b', 'c']   # iterable, because of str values
+for l in letters:
+    print(l)
+# Note: We use iteration to transform data.
+for l in letters:
+    print(l.upper())
+
+# Task: Store the transformed results in a new list.
+letters = ['a', 'b', 'c']
+new_list = []
+for l in letters:
+    new_list.append(l.upper())
+    print(new_list)   # Ans: ['A']
+#                            ['A', 'B']
+#                            ['A', 'B', 'C']
+
+# Iterators - enumerate(), reversed(), zip()
+
+# enumerate(Iterable, start=1), default start from 0
+# It returns (Position Nr. + Value)
+letters = ['a', 'b', 'c']   # < Iterable
+print(enumerate(letters))   # Ans: <enumerate object at 0x00000RFA118K098HQ43>   < Iterator
+#                                    Iterator Type         Memory Address
+print(list(enumerate(letters, start = 1)))   # Ans: [(1, 'a'), (2, 'b'), (3, 'c')]
+
+letters = ['a', 'b', 'c'] 
+for index, value in enumerate(letters):
+    print(index, value)   # Ans: 0 a
+#                                1 b
+#                                2 c
+# Enumerate Use Case: Find the exact position of the bad data in list.
+
+# reversed()
+# Returns an iterator that flips the data order.
+letters = ['a', 'b', 'c']
+print(list(reversed(letters)))   # Ans: ['c', 'b', 'a']
+for l in reversed(letters):
+    print(l)   # Ans: c
+#                     b
+#                     a
+
+# zip()
+# Combines two or more sequences into pairs (tuples)
+letters = ['a', 'b', 'c']
+numbers = [1, 2, 3, 4]
+
+print(list(zip(letters, numbers)))   # Ans: [('a', 1), ('b', 2), ('c', 3)]
+
+for l, n in zip(letters, numbers):
+    print(l, n)   # Ans: a 1
+#                        b 2
+#                        c 3
+
+# map(Class.Function and/or Class, Iterable)
+# Task: Make every letter uppercase
+letters = ['a', 'b', 'c']
+print(list(map(str.upper, letters)))   # Ans: ['A', 'B', 'C']
+
+# Task: Convert list items to integers
+numbers = ['1', '2', '3']
+print(list(map(int, numbers)))   # Ans: [1, 2, 3]
+
+# Task: Clean up the list by removing all unwanted spaces
+names = [' Maria ', 'Don ', ' Bimar']
+print(list(map(str.strip, names)))   # Ans: ['Maria', 'Don', 'Bimar']
+
+names = [' Maria ', 'Don ', ' Bimar']
+for n in map(str.strip, names):
+    print(n)   # Ans: Maria
+#                     Don
+#                     Bimar
+# Note: Map is fast, clean way to do data transformations.
+
+# filter(Function, Iterable)
+# Task: Clean up the list by removing unvalid data
+letters = ['a', '', 'b', None, 'c', False]
+print(list(filter(None, letters)))    # Ans: ['a', 'b', 'c']
+# None, removes all falsy values like 0, '', or False
+print(list(filter(bool, letters)))    # Ans: ['a', 'b', 'c']
+# bool, works the same! it filters out all falsy values
+
+# Task: Keep only letters (alphabetic) items
+items = ['sql', '123', 'python', '43']
+print(list(filter(str.isalpha, items)))   # Ans: ['sql', 'python']
+# str.isalpha (class.method)
+
+items = ['sql', '123', 'python', '43']
+for i in filter(str.isalpha, items):
+    print(i)   # Ans: sql
+#                     python
+# Note: filter() is perfect for cleaning up data in our structures.
+
+
