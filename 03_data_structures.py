@@ -757,7 +757,118 @@ print(list(filter(lambda row: row[0].startswith('M'), students)))
 # Lambda + Sorted
 # sorted(Iterable, Key=lambda_:_,)
 
-# List Comprehension:
+# List Comprehensions:
+
+# Input > [Transformation & Filter] > Output
+# 3 Blocks
+# [1.Data Transformation(p*2)] [2.Loop(p for prices)] [3.Filter(if p>50)] 
+#---------(3)-------------------------(1)---------------------(2)--------
+# Filtering the Data is Optional.
+
+# Task: Normalize the domains into standard format
+domains = ['www.google.com',
+           'openai.com',
+           'localhost',
+           'WWW.PYTHON.COM']
+
+cleaned = [
+    # Data Transformation
+    d.lower().replace('www.', '')
+    # For Loop
+    for d in domains
+    # Data Filtering
+    if '.' in d
+]
+
+print(cleaned)   # Ans: ['google.com', 'openai.com', 'python.com']
+
+cleaned = [ d.lower().replace('www.', '') for d in domains if '.' in d]
+
+cleaned = [
+    d.lower().replace('www.', '')
+    for d in domains
+]
+print(cleaned)   # Ans: ['google.com', 'openai.com', 'localhost', 'python.com']
+# Note: In Comprehensions, Filtering Data is Optional
+
+cleaned = [
+    d
+    for d in domains
+    if '.' in d
+]
+print(cleaned)   # Ans: ['www.google.com', 'openai.com', 'WWW.PYTHON.COM']
+cleaned = [d for d in domains if '.' in d]
+# Note: Only Filtering: Using only the varible name means no transformation.
+
+# Python List Operations:
+
+# 1. [0] (Indexing)
+# 2. [1:3] (Slicing)
+# 3. a, b, c = 1, 2, 3 (Unpacking)
+# 4. max()
+# 5. min()
+# 6. len()
+# 7. all() ('')
+# 8. any() 
+# 9. .count()
+# 10. .index() (position)
+# 11. in
+# 12. .append()
+# 13. .insert(1,)
+# 14. .clear()
+# 15. .remove()
+# 16. .pop()
+# 17. .sort()
+# 18. .reverse()
+# 19. a = b (Assigning)
+# 20. b = a.copy (Shallow Copy)
+# 21. copy.deepcopy() (Deep Copy)
+# 22. + (Combining, Flat List)
+# 23. , (Combining, Nested List)
+# 24. .extend()
+# 25. zip()
+# 26. enumerate()
+# 27. map(fn,)
+# 28. filter(fn,)
+# 29. fn(filter) > fn(transformation) (Comprehension)
+
+
+## DATA STRUCTURES - 
+# list[1,2] < Everything allowed
+# tuple(1,2) < Frozen
+# set{1,2} < Unique
+# dict{'a':1, 'b':2} < Mapping
+
+# 4 Characteristics of Data Structures - 
+# 1) Ordered
+# 2) Duplicates
+# 3) Indexed
+# 4) Mutable
+
+# List
+list = [10, 30, 20, 10]
+
+print(list)   # Ordered, Allow Duplicates 
+print(list[1])   # Indexed
+list[3] = 40
+print(list)   # Mutable
+
+
+## 2. Tuple
+# Ordered collection that can't be changed after creating it.
+
+# Tuple
+tuple = (10, 30, 20, 10)
+
+print(tuple)   # Ordered, Allow Duplicates 
+print(tuple[1])   # Indexed
+#tuple[3] = 40    # Immutable
+
+print(sorted(tuple))   # Ans: [10, 10, 20, 30]
+# Output of this function will always be a List. We can pass for it as Tuple.
+
+# Use Case: For storing the database informations, database server, port, username etc.
+# Protecting the values.
 
 
 
