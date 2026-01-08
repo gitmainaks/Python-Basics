@@ -690,4 +690,74 @@ for i in filter(str.isalpha, items):
 #                     python
 # Note: filter() is perfect for cleaning up data in our structures.
 
+# Python Lambda Functions: Quick & Custom Logic
+
+# Normal Function
+# def tax(price):
+#   return price*1.2
+
+# No name, Anonymous Function
+# tax = lambda price: price*1.2
+
+# Lambda is used with other data structure functions like map(), filter(), sorted() to do extra complicated logic on top of the data structure like the list.
+# Output = lambda X(input variable): Expression(functions, methods, loop, check)
+
+multiple = lambda x: x * 2
+print(multiple(3))   # Ans: 6
+# Variable(multiple), stores a lambda function which doubles a number.
+
+add = lambda x, y: x + y
+print(add(2, 3))   # Ans: 5
+# Note: When a lambda has two parameters, you must pass two values when calling it.
+
+check = lambda i: i in "Python"
+print(check('n'))   # Ans: True
+# Note: A lambda can contain any expression, including conditions.
+
+# Lambda + Map
+# map(lambda_:_, Iterable)
+# Task: Prices are stored as messy strings and need cleaning to floats.
+prices = ['$13.70', '$9.99', '$100.00']
+print(list(map(lambda p: float(p.replace('$', '')), prices)))
+#-------------(2.LambdaFn)------(1.DataTransformation)-------
+#--------(3.Map the Fn to iterate, to manipulate data)-------
+# Ans: [13.7, 9.99, 100.0]
+# Initial test
+#p = '$13.70'
+#print(float(p.replace('$', '')))   # Ans: 13.7
+
+# Lambda + Filter
+# filter(lambda_:_, Iterable)
+# Task: Remove all prices lower than 100
+prices = [120, 30, 300, 80]
+print(list(filter(lambda p: p >= 100, prices)))
+#-------------------(2)-------(1)--------------
+#------------------------(3)-------------------
+# (1) Filter Logic
+# (2) in Lambda
+# (3) Filter to apply the function to filter all data in list
+# Ans: [120, 300]
+
+# Task: Keep only students with scores higher than 70
+students = [['Maria', 85],
+            ['Bumar', 90],
+            ['Max', 60]]
+print(list(filter(lambda row: row[1] > 70, students)))
+# Ans: [['Maria', 85], ['Bumar', 90]]
+# Initial test
+#print(students[2][1] > 70)   # Ans: False
+# Matrix iteration happens one row at a time.
+
+# Task: Keep only students with names starting with 'M'
+print(list(filter(lambda row: row[0].startswith('M'), students)))
+# Ans: [['Maria', 85], ['Max', 60]]
+# Initial test
+#print(students[2][0].startswith('M'))   # Ans: True
+
+# Lambda + Sorted
+# sorted(Iterable, Key=lambda_:_,)
+
+# List Comprehension:
+
+
 
