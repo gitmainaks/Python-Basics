@@ -871,4 +871,126 @@ print(sorted(tuple))   # Ans: [10, 10, 20, 30]
 # Protecting the values.
 
 
+## 3. Set
+# Unordered collection of Unique Values.
+
+# Set
+set = {10, 30, 20, 10}
+
+print(set)   # Ans: {10, 20, 30}; Unordered, Don't Allow Duplicates (Unique)
+#print(set[1])   # Not Indexed
+set.remove(20)
+print(set)   # {10, 30}; Mutable
+
+# Set = {a,b,c} [Hash Function Fn(x) > Hash Table] (Random)
+# used for speed and performance
+# A trade-off between losing the order and having fast performance.
+
+# Set Methods
+a = {10, 20, 30, 40}
+# Note: Index-based methods do not work with Sets.
+a.add(50)
+print(a)   # {40, 10, 50, 20, 30}
+# Add(), inserts the item somewhere in the set, but only if it is new.
+#a.update("Hi")
+#print(a)   # {'H', 40, 10, 50, 20, 'i', 30}
+#a.update([1,2])
+#print(a)   # 
+#a.update({1,2})
+#print(a)   # 
+# Update(), Merges another group of values (Iterable) into the set.
+# Note: We can use mathe operators as quick shortcuts: | & - ^
+a |= {1,2}
+print(a)   # {1, 2, 40, 10, 50, 20, 30}
+# |= works like update for sets
+#a.remove(10)
+#print(a)   # {1, 2, 40, 50, 20, 30}
+# Remove(), Throws an error if the value is missing.
+a.discard(100)
+print(a)   # {1, 2, 40, 10, 50, 20, 30}
+# Discard(), Removes the item if it exists and does nothing if it does not.
+#a.pop()
+#print(a)   # {2, 40, 10, 50, 20, 30}
+# Pop(), Removes and returns a random item from a set.
+
+# Set Math Methods
+# Built-in methods
+a = {10, 20, 30, 40}
+b = {30, 40, 50, 60}
+# Mathematical Operations:
+
+# .Union(), combines All unique items from both sets.
+print(a.union(b))   # {40, 10, 50, 20, 60, 30}
+print(a | b)
+print(a)   # {40, 10, 20, 30}
+# Note: Math operators return a new set and leave the originals untouched.
+
+# .Intersection(), returns only the shared items.
+print(a.intersection(b))   # {40, 30}
+print(a & b)
+
+# .Difference(), returns items only in A, Not in B
+print(a.difference(b))   # {10, 20}
+print(a - b)
+print(b - a)   # {50, 60}
+print(b.difference(a))
+# Return Items in B, but Not in A
+
+# .Symmetric_Difference(), finds only None-Shared items.
+print(a.symmetric_difference(b))   # {10, 50, 20, 60}
+print(a ^ b)   # '^' (shift+6)
+
+# Set Relationship Methods
+# Built-in
+a = {10, 20, 30, 40}
+b = {30, 40, 50, 60}
+
+# .Issubset(), returns True if All items in this set exist in the other.
+print(a.issubset(b))   # False
+
+a = { 30, 40}
+b = {30, 40, 50, 60}
+
+print(a.issubset(b))   # True
+
+# .Issuperset(), returns True when it includes All items of the other set.
+print(b.issuperset(a))   # True
+# Use Case: All Customers must be maintained in Master Table.
+
+# .Isdisjoint(), returns True if both sets share no items (No Overlapping).
+print(a.isdisjoint(b))   # False
+
+a = { 10, 20}
+b = {30, 40, 50, 60}
+
+print(a.isdisjoint(b))   # True
+# Use Case: For Big dataset Spliting, to confirm no same record.
+
+
+## 4. Dictionary
+# It stores different type of informations in key value pairs.
+
+# {Keys(Description of Data) : Values(Actual Data)}
+# Customers = {Name : Alex, Age : 33, Country : USA}   (Pairs)
+
+# Dict
+dict = {
+    'a': 10,
+    'b': 20,
+    'c': 20,
+    'a': 40
+}
+
+print(dict)   # {'a': 40, 'b': 20, 'c': 20}; Ordered
+# Keys are Unique
+# Values Allow Duplicates
+#print(dict[1])   # Not Indexed
+print(dict['b'])   # 20
+# Note: In Dict, we access values by using their keys, not indexes (Dict is Keyed).
+dict['c'] = 80
+print(dict)   # {'a': 40, 'b': 20, 'c': 80}; Mutable
+
+# Dict Methods
+
+
 
