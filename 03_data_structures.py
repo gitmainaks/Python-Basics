@@ -1132,7 +1132,52 @@ system_conn = {
 # Use Case.4: Config and Environment Data
 # Store system settings like host, port, and usernames in one clean place.
 
+# Use Case.5: ETL and Pipeline Settings
+# Great for storing run parameters and controlling how our ETL pipeline loads data.
+etl_config = {
+    "DEBUG_MODE": False,                     # Turn verbose logging on/off
+    "BATCH_SIZE": 500,                       # How many rows to process per batch
+    "LOG_LEVEL": "INFO",                     # Logging verbosity
+    "SOURCE_PATH": "/data/bronze/",          # Where raw files live
+    "TARGET_PATH": "/data/silver/",          # Where cleaned files go
+    "RETRY_COUNT": 3,                        # How many times to retry a failed extr
+    "FAIL_ON_ERROR": False,                  # Keep going or stopped the job
+    "VALIDATE_SCHEMA": True,                 # Enforce schema checks
+    "SUPPORTED_FORMATS": ["csv", "parquet"], # Allowed file types
+    "RUN_ENV": "production"                  # dev / test / prod
+}
+
+# Use Case.6: Metadata
+# Data About our Data
+
+# Metadata
+table_metadata = {
+    "table_name": "customers",
+    "columns": {
+        "id": {"type": "integer", "nullable": False},
+        "name": {"type": "string", "nullable": True},
+        "age": {"type": "integer", "nullable": True},
+        "country": {"type": "string", "nullable": True}
+    },
+    "row_count": 105320,
+    "file_format": "parquet",
+    "last_updated": "2025-11-07T12:35:00Z",
+    "partition_by": ["country"],
+    "tags": ["pii", "customer_data"],
+}
 
 
 
+#### How to choose the right Data Structure?
 
+### Decision Tree
+## Default? (If no Other Reasons) -> [LIST] [1,2,3]
+# Protect? (No Changes!) -> (TUPLE) (1,2,3)
+# Unique & Performance? (Comparison) -> {SET} {1,2,3}
+# Mapping? (Multiple Info in One place) -> {DICT} {'a':1,'b':2}
+
+#                                   Default?
+#                               [LIST] [1,2,3]
+
+#           Protect?         Unique & Performance?             Mapping?
+#       (TUPLE) (1,2,3)          {SET} {1,2,3}           {DICT} {'a':1,'b':2}
