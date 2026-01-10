@@ -991,6 +991,148 @@ dict['c'] = 80
 print(dict)   # {'a': 40, 'b': 20, 'c': 80}; Mutable
 
 # Dict Methods
+# Special Methods
+
+user = {"id":1, "age":30, "city": "berlin"}
+
+# Access
+print(user["city"])   # berlin
+#print(user["name"])   # KeyError
+# If the key is not found, Python throws a KeyError
+print(user.get("name", "Unknown"))   # Unknown, default None
+# .Get(), returns the value safely, gives None if missing.
+# Missing key returns None or the default value.
+print(user.get("age"))   # 30
+
+# Checks
+print("age" in user)   # True
+# In Operator, tests if the key is inside the dictionary.
+print("name" in user)   # False
+
+# View Objects
+print(user.keys())   # dict_keys(['id', 'age', 'city'])
+# .Keys(), returns all the KEYS in our dictionary.
+print(user.values())   # dict_values([1, 30, 'berlin'])
+# .Values(), returns all the VALUES in our dictionary.
+print(user.items())   # dict_items([('id', 1), ('age', 30), ('city', 'berlin')])
+# .Items(), returns all (key, value) pairs of our dictionary.
+# Items() is perfect when we need key and value together for looping, transforming data, building new dicts, comparing and more.
+print(user)   # {'id': 1, 'age': 30, 'city': 'berlin'}
+
+# Looping
+for u in user:
+    print(u)   # id
+               # age
+               # city
+for u in user:
+    print(u, user[u])   # id 1
+                        # age 30
+                        # city berlin
+
+# Clean way of Looping
+for key, value in user.items():
+    print(key, value)   # id 1
+                        # age 30
+                        # city berlin
+
+# Add, Remove, Update
+
+# Assign Key, updates the value if the key exists, or inserts a new key value pair if it doesn't.
+user["name"] = "John"
+print(user)   #(Add) {'id': 1, 'age': 30, 'city': 'berlin', 'name': 'John'}
+user["age"] = 35
+print(user)   #(Update) {'id': 1, 'age': 35, 'city': 'berlin', 'name': 'John'}
+# .Update(), adds new keys and updates existing ones using another dictionary.
+user.update({"age": 40, "city": "Paris"})
+print(user)   # {'id': 1, 'age': 40, 'city': 'Paris', 'name': 'John'}
+
+# Removing
+# .Pop(), removes a key from the dictionary and returns its value.
+#age = user.pop("age")
+#print(user)   # {'id': 1, 'city': 'Paris', 'name': 'John'}
+#print("Removed Item:", age)   # Removed Item: 40
+#age = user.pop("salary")   # KeyError
+age = user.pop("salary", "Not Found")
+print(user)   # {'id': 1, 'city': 'Paris', 'name': 'John'}
+print("Removed Item:", age)   # Removed Item: Not Found
+# Pop(), removes the key and returns its value or returns our default if the key is missing.
+
+#user.pop()   # TypeError: pop expected at least 1 argument, got 0
+# .Popitem(), returns and deletes the most recent key value pair from the dictionary.
+user.popitem()
+print(user)   # {'id': 1, 'age': 40, 'city': 'Paris'}
+
+# Creating Dict
+user = {"id": None,
+        "name": None,
+        "age": None,
+        "city": None}
+# .Fromkeys(), builds a new dictionary where all keys get the same default value.
+user = dict.fromkeys(["id", "name", "age", "city"], None)
+print(user)   # {'id': None, 'name': None, 'age': None, 'city': None}
+user["age"] = 40
+print(user)   # {'id': None, 'name': None, 'age': 40, 'city': None}
+
+# Dict Challenge
+# Challenge: Keep only String values & Convert them to UPPERCASE, in a New Dict
+user = {"id": 1, "name": "John", "age": 30, "city": "Berlin"}
+
+user_str = {
+    k: v.upper() #Expression(3.Transformation if applicable)
+    for k, v in user.items() #Loop(1)
+    if isinstance(v, str) #Filter(2)
+}
+
+print(user_str)   # {'name': 'JOHN', 'city': 'BERLIN'}
+
+user_str = {
+    k.upper(): v.lower() #Expression(3.Transformation if applicable)
+    for k, v in user.items() #Loop(1)
+    if isinstance(v, str) #Filter(2)
+}
+print(user_str)   # {'NAME': 'john', 'CITY': 'berlin'}
+
+# Dict Applications
+
+# Representing a Single Row from a Database or API
+row = {
+    "id": 101,
+    "name": "John",
+    "country": "DE",
+    "age": 29,
+    "status": "active"
+}
+# Use Case.1: Database or API Records
+# Returned records are stored as dictionaries where column names are keys and the row values are the dictionary values.
+
+# Mapping Translations to Friendly Values
+status_map = {
+    "01": "Open",
+    "02": "In Progress",
+    "03": "Done"
+}
+# Use Case.2: Mapping to Friendly Values
+# Great for converting technical codes into friendly labels.
+
+country_map = {
+    "DE": "Germany",
+    "FR": "France",
+    "US": "United States"
+}
+# Use Case.3: Mapping Abbreviations
+# Turning short abbreviations into full readable names.
+
+# Storing Environment Variables & Configuration
+system_conn = {
+    "DB_HOST": "prod-db.company.com",
+    "DB_PORT": 5432,
+    "DB_USER": "admin_user",
+    "DB_NAME": "analytics_warehouse"
+}
+# Use Case.4: Config and Environment Data
+# Store system settings like host, port, and usernames in one clean place.
+
+
 
 
 
