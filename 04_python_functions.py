@@ -237,3 +237,42 @@ clean_name(" MAx  ", "STERN ")   # max stern From n/a
 # Rule: Parameter without a Default follows Parameter with a Default.
 
 
+## *Args and **Kwargs
+# Some times we dont know how many arguments we will pass to the function, so we use *args and **kwargs to handle that.
+
+# *Args(Positional Arguments) & **Kwargs(Keyword Arguments): allow functions to accept a unknown number of arguments.
+
+# Calculate the total of values
+def total(a=0, b=0, c=0, d=0):
+    print(a + b + c + d)
+total(1, 2)   # 3
+total(1, 2, 3)   # 6
+total(1, 2, 3, 4)   # 10
+
+def total(*args):
+    print(type(args))   # <class 'tuple'>
+    print(sum(args))
+total(1, 2)   # 3
+total(1, 2, 3)   # 6
+total(1, 2, 3, 4)   # 10
+total(1, 2, 3, 4, 5, 6)   # 21
+# Args: A tuple of all the positional arguments passed to the function.
+# When we pass similar types of values.
+
+# Create the user profile
+def create_user(**kwargs):
+    print(type(kwargs))   # <class 'dict'>
+    print(kwargs)
+create_user(firstname="Mo",
+            last_name="Salah",
+            age=33,
+            country="Egypt")   # {'firstname': 'Mo', 'last_name': 'Salah', 'age': 33, 'country': 'Egypt'}
+create_user(name="Ronaldo",
+            country="Portugal")   # {'name': 'Ronaldo', 'country': 'Portugal'}
+# Kwargs: A dictionary of all the keyword arguments passed to the function.
+# When we pass different types of values.
+# Works only with Keyword Arguments.
+
+
+
+
