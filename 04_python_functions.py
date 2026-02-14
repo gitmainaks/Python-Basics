@@ -275,4 +275,121 @@ create_user(name="Ronaldo",
 
 
 
+## Python Return() vs Print()
+
+# Return: Returns a value from a function, allowing it to be used elsewhere.
+# Print: Displays a value to the console, but does not return it for further use.
+
+# Return(), a Transformation Function
+# If we don't specify a Return, Python still returns None by default.
+
+def clean_name(name):
+    cleaned = name.strip().lower()
+    print(cleaned)
+clean_name(" MiChAel  ")   # michael
+
+# Print() is for Displaying, Return() is for Reusing.
+
+def clean_name(name):
+    cleaned = name.strip().lower()
+    return cleaned
+cln_name = clean_name(" MiChAel  ")   # cln_name (a Global variable) now holds the returned value from the function, which is "michael".
+# Assign the Return Value: Assign the function call to a variable to store the result.
+print(cln_name)   # michael
+
+def clean_name(name):
+    cleaned = name.strip().lower()
+    #return cleaned
+cln_name = clean_name(" MiChAel  ")
+print(cln_name)   # None
+# Note: If a function has no Return statement, Python returns None.
+
+def clean_name(name):
+    if not name:   # Check if the value is empty
+        return None
+    else:
+        cleaned = name.strip().lower()
+        return cleaned
+cln_name = clean_name("")
+print(cln_name)   # None
+# Note: A function can have multiple Return statements, but only one will execute based on the logic. Once a Return is hit, the function exits immediately.
+# Extend the Logic: If the value is empty, convert it to None. Otherwise, clean it.
+
+
+def clean_name(name):
+    lo_cleaned = name.strip().lower()
+    up_cleaned = name.strip().upper()
+    return lo_cleaned, up_cleaned
+cln_name = clean_name(" MiChAel  ")
+print(cln_name)   # ('michael', 'MICHAEL')
+# Note: We can Return multiple values separated by commas, and Python will return them as a tuple.
+# Extend the Logic: Return the value in both upper and lower case.
+
+lo_name, up_name = clean_name(" MiChAel  ")
+print(lo_name)   # michael
+print(up_name)   # MICHAEL
+# normal string values
+
+
+
+## Python Function Types (Action, Transform, Validate, Orchestrate)
+## Function Types by Purpose ("use cases")
+
+
+# (1) Action Functions: Designed to perform an operation in the system, instead of returning values.
+# Example: print(), input(), send_email(), log_event(), call(API), connect_db(), save_file()
+# Action functions are also called Side Effect functions, Handler, Service, and "Procedures" or "Commands" because they execute a series of steps to achieve a specific outcome.
+
+# Task: Stores application log messages in a file whenever an event occurs.
+def write_log(message):
+    with open(r"D:\Main\Python\app.log", "a") as file:
+        file.write(message + "\n")
+#write_log("App Started")
+#write_log("User Logged In")
+write_log("App Stopped")
+# with open: Opens the file safely and closes it automatically when done.
+# Append Mode "a": It appends data at the end of the file.
+
+
+# (2) Transformation Functions: Designed to take input (Raw Data), process it (Data Manipulation, "Business Logic"), and return a new value (Processed Data).
+# Example: len(), str(), int(), clean_name(), calculate_total(), format_date()
+# Transformation functions are also called Calculation, Utility and Pure Functions, Mappers because they take input and produce output without side effects.
+
+# Task: Clean email addresses and split them into structured data (Username and Domain).
+def clean_and_split_email(email):
+    cl_email = email.strip().lower()
+    username, domain = cl_email.split("@")
+    return {"username": username,
+            "domain": domain}
+print(clean_and_split_email(" SAra@gmAil.com  "))   # {'username': 'sara', 'domain': 'gmail.com'}
+
+
+# (3) Validation Functions: Validates a condition and returns a boolean result (True or False).
+# Example: is_valid_email(), is_positive(), is_palindrome(), validate_password()
+# Uses: Check User input, Check Business Rules, Check Permissions
+# Also called Checker
+
+# Task: Check whether the password meets the minimum requirement of 8 characters.
+def is_valid_password(password):
+    return len(password) >= 8
+print(is_valid_password("123456"))   # False
+print(is_valid_password("12345678"))   # True
+
+# Task: Check whether an email has a basic valid format.
+def is_valid_email(email):
+    return "@" in email and "." in email
+print(is_valid_email("saragmail.com"))   # False
+print(is_valid_email("sara@gmail.com"))   # True
+print(is_valid_email("sara@gmailcom"))   # False
+print(is_valid_email("saragmailcom"))   # False
+
+
+# (4) Orchestrator Functions: 
+
+
+
+
+
+
+
 
