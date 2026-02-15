@@ -1,0 +1,27 @@
+App Started
+User Logged In
+App Stopped
+App Stopped
+App Stopped
+App Stopped
+App Stopped
+App Stopped
+App Stopped
+App Stopped
+App Stopped
+App Stopped
+App Stopped
+App Started
+Processed Email: {'username': 'sara', 'domain': 'gmail.com'}
+App Stopped
+App Stopped
+App Started
+Invalid Email received: saragmail.coM
+App Stopped
+App Stopped
+App Started
+Processed Email: {'username': 'sara', 'domain': 'gmail.com'}
+App Stopped
+App Started
+Processed Email: {'username': 'sara', 'domain': 'outlook.net'}
+App Stopped
