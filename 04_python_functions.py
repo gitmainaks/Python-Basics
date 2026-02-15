@@ -43,7 +43,7 @@
 
 ## User-Defined Functions
 
-# How Function Work?
+# How Function Works?
 # 1) Function Definition
 # def function_name():
 #       <----->
@@ -384,7 +384,69 @@ print(is_valid_email("sara@gmailcom"))   # False
 print(is_valid_email("saragmailcom"))   # False
 
 
-# (4) Orchestrator Functions: 
+# (4) Orchestrator Functions: Controls program flow by calling other functions in the correct order.
+# Example: main(), process_order(), handle_request(), run_pipeline()
+# Orchestrator functions are also called Workflow Fns, Controller, Pipeline, Coordinator, and "Facades" because they manage the interaction between different components of the system.
+
+# Action Function
+def write_log(message):
+    # Task: Store application log messages in a file on drive D
+    with open(r"D:\Main\Python\app.log", "a") as file:
+        file.write(message + "\n")
+
+# Validation Function
+def is_valid_email(email):
+    return "@" in email and "." in email
+
+# Transformation Function
+def clean_and_split_email(email):
+    # Task: Clean an email and split it into username and domain.
+    email = email.strip().lower()
+    username, domain = email.split("@")
+    return {
+        "username": username,
+        "domain": domain
+    }
+
+# Task: Project
+write_log("App Started")
+# 1) Receive an email from the user.
+email = input("Please enter Your Email: ")   # email is a Global Variable that holds the user input value.
+# 2) Validate the email.
+#is_valid_email(email)
+# 3) If it is invalid, Log an error in a file.
+if not is_valid_email(email):
+    write_log(f"Invalid Email received: {email}")
+# 4) If it is valid, Clean and store the structured email.
+else:
+    clean_email = clean_and_split_email(email)   # clean_email is a Global Variable that holds the returned value from the function, which is a dictionary with the cleaned username and domain.
+# 5) Log each step of the program.
+    write_log(f"Processed Email: {clean_email}")
+write_log("App Stopped")
+
+# Orchestrator Function
+def process_user_email(email):
+    write_log("App Started")
+    # 2) Validate the email.
+    # 3) If it is invalid, Log an error in a file.
+    if not is_valid_email(email):
+        write_log(f"Invalid Email received: {email}")
+    # 4) If it is valid, Clean and store the structured email.
+    else:
+        clean_email = clean_and_split_email(email)
+    # 5) Log each step of the program.
+        write_log(f"Processed Email: {clean_email}")
+    write_log("App Stopped")
+# 1) Receive an email from the user.
+email = input("Please enter Your Email: ")
+process_user_email(email)
+
+
+
+
+
+
+
 
 
 
