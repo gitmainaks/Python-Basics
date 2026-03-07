@@ -443,15 +443,57 @@ process_user_email(email)
 
 
 
+## Function Styling Guide
 
+# 1. Use snake_case for Function Names
+#   - Write function names in lowercase and separate words with underscores.
 
+# 2. Use Clear Descriptive Function Names
+#   - Describe exactly what the function does.
+#   - Start with a verb.
+#   - Use full words, avoid abbreviations.
 
+# 3. Parameter Names Describe Their Values
+#   - Use meaningful names for parameters that indicate what data they hold.
+#   - Avoid abbreviation and single letters.
 
+# 4. Always Describe Functions using Docstring
+#   - Help teammates understand our code.
+#   - Help in future to remember the logic.
+# Docstring: A short text on the first line inside a function that explains what the function does.
+"""Clean an email address by removing extra spaces and converting it to lowercase."""    #Example
+# Comment (#): Python ignores comments, they are only notes for us (It is lost).
+# Docstring (""""""): Python stores it inside the function and can be reused by tools, editors etc.
+# Usage: Docstring can be used by functions like help() to provide information about the function's purpose and usage, and also by tools, IDEs etc.
 
+# 5. Replace Print with Return to send data back to the programme.
 
+# 6. Don't change parameter values directly, create local variables for any processing.
 
+# *Return One-Line Expressions Directly: Put simple calculations directly inside the Return statement instead of storing them in extra variables. (return price - (price * rate/100))
 
+# 7. Use Data Type Hints
+#   - Always add type hints to parameters and return to make the function easier to understand.
+# Note: "float" is only a type hint. It does not convert.
 
+# 8. Explain Args & Return in Docstring
+#   - Always describe what goes in and what comes out of the function in the docstring.
+
+def calculate_discount(price: float, rate: float)-> float:
+    """
+    Calculate the final price after applying a discount.
+    Args:
+        price (float): Original Product Price.
+        rate (float): Discount Rate as numbers (e.g. 20 for 20%).
+    Returns: 
+        final_price (float): Final Price after applying discount.
+    """
+    final_price = price - (price * rate/100)
+    return final_price
+
+print("Calculating Discount")
+print(calculate_discount(80,20))
+help(calculate_discount)
 
 
 
